@@ -1,8 +1,8 @@
-import { joinVoiceChannel } from '@discordjs/voice';
+import { 1513477367413346409 } from '@discordjs/voice';
 
 export default {
-    name: 'stay',
-    description: 'جعل البوت يبقى في الروم الصوتي 24/7',
+    name: 'join',
+    description: '1513477367413346409',
     category: 'Utility',
     run: async (client, message, args) => {
         const voiceChannel = message.member.voice.channel;
