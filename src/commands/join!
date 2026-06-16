@@ -1,0 +1,23 @@
+ import { joinVoiceChannel } from '@discordjs/voice';
+
+export default {
+    name: 'join',
+    description: 'يدخل البوت إلى الروم الصوتي الخاص بك',
+    category: 'Utility',
+    run: async (client, message, args) => {
+        const voiceChannel = message.member.voice.channel;
+        if (!voiceChannel) return message.reply('يجب أن تكون في روم صوتي أولاً!');
+
+        try {
+            joinVoiceChannel({
+                channelId: voiceChannel.id,
+                guildId: message.guild.id,
+                adapterCreator: message.guild.voiceAdapterCreator,
+            });
+            await message.reply('تم الانضمام إلى الروم الصوتي بنجاح! 🎤');
+        } catch (error) {
+            console.error(error);
+            await message.reply('حدث خطأ أثناء محاولة الانضمام.');
+        }
+    }
+};
